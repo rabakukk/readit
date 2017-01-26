@@ -18,7 +18,24 @@ from django.contrib import admin
 from django.conf import settings
 from books.views import list_books
 
+import debug_toolbar
 urlpatterns = [
+    url(r'^__debug__/', include(debug_toolbar.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^$', list_books, name='books'),
 ]
+
+'''
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+        url(r'^admin/', admin.site.urls),
+        url(r'^$', list_books, name='books'),
+    ]
+else:
+    urlpatterns = [
+        url(r'^admin/', admin.site.urls),
+        url(r'^$', list_books, name='books'),
+    ]
+'''    
