@@ -13,7 +13,7 @@ class Book(models.Model):
         return "{} by {}".format(self.title, self.list_authors())
 
     def list_authors(self):
-        return "".join([author.name for author in self.authors.all()])
+        return "".join([author.name for author in self.author.all()])
 
     def save(self, *args, **kwargs):
         if (self.review and self.date_reviewed is None):
